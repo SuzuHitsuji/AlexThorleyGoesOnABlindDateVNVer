@@ -1,0 +1,102 @@
+[gd_scene load_steps=7 format=3 uid="uid://lg1n52nub220"]
+
+[ext_resource type="FontFile" uid="uid://cacfu1n7s56if" path="res://Resources/ATypewriterForMe.ttf" id="1"]
+[ext_resource type="Script" path="res://Code/Credits.gd" id="2"]
+
+[sub_resource type="FontFile" id="1"]
+fallbacks = Array[Font]([ExtResource("1")])
+face_index = null
+embolden = null
+transform = null
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/glyphs/0/advance = Vector2(0, 0)
+cache/0/16/0/glyphs/0/offset = Vector2(0, 0)
+cache/0/16/0/glyphs/0/size = Vector2(0, 0)
+cache/0/16/0/glyphs/0/uv_rect = Rect2(0, 0, 0, 0)
+cache/0/16/0/glyphs/0/texture_idx = -1
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="Animation" id="2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(217, 969)]
+}
+
+[sub_resource type="Animation" id="3"]
+resource_name = "scroll"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RichTextLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(217, 969), Vector2(217, -2050)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t21pj"]
+_data = {
+"RESET": SubResource("2"),
+"scroll": SubResource("3")
+}
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 217.0
+offset_top = 969.0
+offset_right = 759.0
+offset_bottom = 2977.98
+theme_override_fonts/normal_font = SubResource("1")
+bbcode_enabled = true
+text = "Bản nhạc tại Nhà hàng là bài  Jazz Background Music Loop sáng tác bởi Migfus20 (CC-BY)
+
+Bản nhạc tại Ngã tư là bài  Jazz Background Music Loop sáng tác bởi Migfus20 (CC-BY)
+
+(Cả hai bản nhạc trên đều có cùng tên và đều được trích từ bản \"You like some Jazz\")
+
+Bản nhạc tại Phòng ngủ là bài Mysterious Piano Music Loop sáng tác bởi Migfus20 (CC-BY)
+
+Tên font là A Typewriter For Me được tạo bởi Zachary Lucier (Thuộc Quyền Sở Hữu Chung)
+
+Cảm ơn Fishish và Uncle Nicolini vì đã nhận xét.
+
+Game được làm bởi
+IronShears
+
+
+
+
+Gift Exchange 2022 tới syuzhet :)"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_t21pj")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

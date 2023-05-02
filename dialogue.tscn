@@ -1,0 +1,86 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3qdinhn0ggof"]
+
+[ext_resource type="Script" path="res://Code/FlavorText.gd" id="1"]
+[ext_resource type="FontFile" uid="uid://cacfu1n7s56if" path="res://Resources/ATypewriterForMe.ttf" id="2"]
+[ext_resource type="Texture2D" uid="uid://dchyx4dmybnkc" path="res://Sprites/dialoguebox1.png" id="3"]
+
+[sub_resource type="FontFile" id="1"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+fallbacks = Array[Font]([ExtResource("2"), ExtResource("2")])
+face_index = null
+embolden = null
+transform = null
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="FontFile" id="2"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+fallbacks = Array[Font]([ExtResource("2"), ExtResource("2")])
+face_index = null
+embolden = null
+transform = null
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[node name="Dialogue" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.05
+autostart = true
+
+[node name="Dialoguebox1" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.988235)
+position = Vector2(477.5, 798.25)
+scale = Vector2(0.652083, 0.531972)
+texture = ExtResource("3")
+
+[node name="Name" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 665.0
+offset_right = 928.0
+offset_bottom = 719.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = SubResource("1")
+text = "test"
+
+[node name="Text" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 738.0
+offset_right = 926.0
+offset_bottom = 925.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = SubResource("2")
+bbcode_enabled = true
+text = "test test
+test
+test
+test"
+
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 0.001
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]
